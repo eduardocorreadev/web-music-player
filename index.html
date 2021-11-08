@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title -->
-    <title>Web Music Play</title>
+    <title>Web Music Player</title>
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
@@ -17,14 +17,19 @@
 
     <!-- Style Documents -->
     <link rel="stylesheet" href="assets/css/general.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 
 </head>
 
 <body>
 
+    <audio>
+        <source src="musics/Vitor Kley - O Sol (VINNE, Double MZK Remix)_160k.mp3" type="audio/mpeg">
+    </audio>
+
     <header class="header">
         <img src="assets/images/logo.png" alt="Logo da WMP (Web Music Play)">
-        <div class="toggle-bars">
+        <div class="toggle-bars" id="toggle-bars">
             <div></div>
             <div></div>
             <div></div>
@@ -32,7 +37,7 @@
     </header>
 
     <main>
-        <div class="music-area">
+        <div class="music-area" id="music-area">
 
             <div class="banner-music">
                 <img src="assets/images/banners/1.png" alt="">
@@ -76,14 +81,14 @@
 
     </main>
 
-    <div class="list">
+    <div class="list" id="list">
         <div class="container">
             <div class="header">
                 <h2>
                     Lista de Músicas
                     <span>(0)</span>
                 </h2>
-                <i class="fas fa-times"></i>
+                <i class="fas fa-times" id="close-list"></i>
             </div>
 
             <div class="music-list">
@@ -148,6 +153,7 @@
 
     <!-- Javascript Documents -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/controls.js"></script>
 </body>
 
 </html>

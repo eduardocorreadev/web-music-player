@@ -1,0 +1,11 @@
+
+@media (max-width: 950px) {
+    .list .container {
+        width: 100%; height: 100%;
+        border-radius: 0;
+    }
+
+    .list .container .music-list {
+        height: 400px;
+    }
+}
