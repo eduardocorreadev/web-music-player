@@ -12,8 +12,7 @@
     <title>Web Music Player</title>
 
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
     <!-- Style Documents -->
     <link rel="stylesheet" href="assets/css/general.css">
@@ -24,7 +23,7 @@
 <body>
 
     <audio>
-        <source src="musics/Vitor Kley - O Sol (VINNE, Double MZK Remix)_160k.mp3" type="audio/mpeg">
+        <source src="musics/ariana-grande-7-rings-lyrics-2854589.mp3" type="audio/mpeg">
     </audio>
 
     <header class="header">
@@ -48,30 +47,31 @@
             <div class="music-details">
                 <h2>O Sol (VINNE, Double MZK Remix)</h2>
                 <span>Vitor Kley e VINNE</span>
+                <span id="timer-display"></span>
             </div>
 
             <div class="progress-bar">
-                <div></div>
+                <input type="range" id="progress-bar" value="0" onchange="positionAudio(this.value)">
             </div>
 
             <div class="controls">
                 <ul>
                     <li>
-                        <img src="assets/images/icons/random-icon.svg">
+                        <span class="material-icons" id="random-controll">shuffle</span>
                     </li>
 
                     <li>
-                        <img src="assets/images/icons/back-icon.svg">
+                        <span class="material-icons">skip_previous</span>
                     </li>
                     <li class="play-controll">
-                        <img src="assets/images/icons/play-icon.svg">
+                        <span class="material-icons" id="play-controll">play_circle_filled</span>
                     </li>
                     <li>
-                        <img src="assets/images/icons/next-icon.svg">
+                        <span class="material-icons">skip_next</span>
                     </li>
 
                     <li>
-                        <img src="assets/images/icons/loop-icon.svg">
+                        <span class="material-icons" id="loop-controll">all_inclusive</span>
                     </li>
                 </ul>
             </div>
@@ -132,7 +132,7 @@
                     </div>
                     <i class="fas fa-play-circle"></i>
                 </div>
-                
+
 
                 <div class="no-more-item">
                     <i class="far fa-sad-cry"></i>
@@ -142,18 +142,19 @@
 
             </div>
 
-            <div class="select-theme-footer">
+            <div class="select-theme-footer" id="select-theme">
                 <div class="red-theme selected"></div>
                 <div class="blue-theme"></div>
                 <div class="green-theme"></div>
             </div>
-            
+
         </div>
     </div>
 
     <!-- Javascript Documents -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/controls.js"></script>
+    <script src="assets/js/changeTheme.js"></script>
 </body>
 
 </html>

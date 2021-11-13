@@ -1,3 +1,19 @@
+(function() {
+    if (!localStorage.getItem('wmp-config')) {
+
+        let configPlayer = {
+            currentMusic: {
+                titleMusic: '',
+                currentTime: 0,
+            },
+            controls: {
+                random: false,
+                loop: false,
+            }
+        }
+
+    }
+})
 
 console.log('<3')
 

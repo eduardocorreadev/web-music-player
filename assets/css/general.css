@@ -22,7 +22,6 @@ html, body {
 }
 
 body {
-    background: rgb(255,0, 51);
     background: radial-gradient(rgb(255, 0, 51, 0.8), #000000);
 }
 
@@ -152,8 +151,8 @@ main .progress-bar {
     margin: 40px 0;
 }
 
-main .progress-bar div {
-    max-width: 800px; height: 5px;
+main .progress-bar input[type=range] {
+    width: 100%;
     background: #44475a;
     margin: 0 auto;
 }
@@ -193,13 +192,14 @@ main .music-area .controls ul li {
     margin: 0 20px;
 }
 
-main .music-area .controls img {
-    width: 20px;
+main .music-area .controls span {
+    color: #fff;
+    font-size: 2.5rem;
     cursor: pointer;
 }
 
-main .music-area .controls .play-controll img {
-    width: 35px;
+main .music-area .controls .play-controll span {
+    font-size: 3.5em;
 }
 
 
@@ -338,6 +338,10 @@ main .music-area .controls .play-controll img {
     border-radius: 100%;
     margin: 0 5px;
     cursor: pointer;
+}
+
+.list .container .select-theme-footer div::target-text {
+    display: none;
 }
 
 .list .container .select-theme-footer div.red-theme {
