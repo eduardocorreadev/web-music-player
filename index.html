@@ -22,8 +22,8 @@
 
 <body>
 
-    <audio>
-        <source src="musics/ariana-grande-7-rings-lyrics-2854589.mp3" type="audio/mpeg">
+    <audio autoplay>
+        <source src="" type="audio/mpeg">
     </audio>
 
     <header class="header">
@@ -45,9 +45,8 @@
             </div>
 
             <div class="music-details">
-                <h2>O Sol (VINNE, Double MZK Remix)</h2>
-                <span>Vitor Kley e VINNE</span>
-                <span id="timer-display"></span>
+                <h2></h2>
+                <span></span>
             </div>
 
             <div class="progress-bar">
@@ -88,59 +87,10 @@
                     Lista de Músicas
                     <span>(0)</span>
                 </h2>
-                <i class="fas fa-times" id="close-list"></i>
+                x
             </div>
 
-            <div class="music-list">
-
-                <div class="music-item">
-                    <div class="name-music">
-                        <h2>É Fuga na Dona de Casa (SrSider Remix)</h2>
-                        <span>SrSider</span>
-                    </div>
-                    <i class="fas fa-play-circle"></i>
-                </div>
-
-                <div class="music-item active">
-                    <div class="name-music">
-                        <h2>É Fuga na Dona de Casa (SrSider Remix)</h2>
-                        <span>SrSider</span>
-                    </div>
-                    <i class="fas fa-play-circle"></i>
-                </div>
-
-                <div class="music-item">
-                    <div class="name-music">
-                        <h2>É Fuga na Dona de Casa (SrSider Remix)</h2>
-                        <span>SrSider</span>
-                    </div>
-                    <i class="fas fa-play-circle"></i>
-                </div>
-
-                <div class="music-item">
-                    <div class="name-music">
-                        <h2>É Fuga na Dona de Casa (SrSider Remix)</h2>
-                        <span>SrSider</span>
-                    </div>
-                    <i class="fas fa-play-circle"></i>
-                </div>
-
-                <div class="music-item">
-                    <div class="name-music">
-                        <h2>É Fuga na Dona de Casa (SrSider Remix)</h2>
-                        <span>SrSider</span>
-                    </div>
-                    <i class="fas fa-play-circle"></i>
-                </div>
-
-
-                <div class="no-more-item">
-                    <i class="far fa-sad-cry"></i>
-                    <h2>Nada mais foi encontrado!</h2>
-                    <button>Adicionar Nova Música</button>
-                </div>
-
-            </div>
+            <div class="music-list" id="music-list"></div>
 
             <div class="select-theme-footer" id="select-theme">
                 <div class="red-theme selected"></div>
@@ -152,9 +102,11 @@
     </div>
 
     <!-- Javascript Documents -->
+    <script src="assets/js/Controll.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/controls.js"></script>
     <script src="assets/js/changeTheme.js"></script>
+    <script src="assets/js/musics.js"></script>
 </body>
 
 </html>

@@ -9,8 +9,11 @@ let statePlay = false
 let musicTimer;
 
 function onPlay() {
+
     audioElement.play()
     playControll.innerHTML = 'pause_circle' 
+
+    musicArea.classList.add('on')
 
     let progressBar = document.getElementById('progress-bar') // Input Range
     progressBar.max = audioElement.duration
@@ -25,6 +28,8 @@ function onPlay() {
 
 function onPause() {
     audioElement.pause()
+
+    musicArea.classList.remove('on')
 
     playControll.innerHTML = 'play_circle_filled'
     clearInterval(musicTimer)
