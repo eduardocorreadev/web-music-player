@@ -1,4 +1,3 @@
-
 const musicList = document.getElementById('music-list')
 const musicFolder = 'musics/'
 const musicElements = [
@@ -24,6 +23,8 @@ const musicElements = [
     }
 ]
 
+localStorage.setItem('list-music', JSON.stringify(musicElements))
+
 musicElements.map(music => {
     let addInList = `
         <div class="music-item">
@@ -36,23 +37,4 @@ musicElements.map(music => {
         </div>
     `
     musicList.innerHTML += addInList
-})
-
-
-const musicItem = document.querySelectorAll('.music-item')
-let audio = document.querySelector('audio')
-let sourceAudio = document.querySelector('source')
-
-musicItem.forEach(item => {
-    item.addEventListener('click', () => {
-        sourceAudio.src = item.querySelector('.directory-music').textContent
-        audio.load()
-        
-        let displayNameMusic = document.querySelector('.music-details h2')
-        let displayAuthorMusic = document.querySelector('.music-details span')
-
-        displayNameMusic.innerHTML = item.querySelector('h2').textContent
-        displayAuthorMusic.innerHTML = item.querySelector('span').textContent
-    })
-    
 })

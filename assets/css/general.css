@@ -23,6 +23,9 @@ html, body {
 
 body {
     background: radial-gradient(rgb(255, 0, 51, 0.8), #000000);
+    /* background: url('https://image.freepik.com/vetores-gratis/fundo-de-paisagem-tropical-para-zoom_52683-42068.jpg') center center no-repeat;
+    background-size: cover;
+    background-size: 100%; */
 }
 
 ul li {
@@ -95,6 +98,7 @@ header.header .toggle-bars div {
     height: 4px;
     background: #fff;
     float: right;
+    transition: 0.3s;
 }
 
 header.header .toggle-bars div:nth-child(1) {
@@ -108,6 +112,19 @@ header.header .toggle-bars div:nth-child(2) {
 
 header.header .toggle-bars div:nth-child(3) {
     width: 37px;
+}
+
+header.header .toggle-bars.on div:nth-child(1) {
+    width: 40px;
+    transform: rotate(45deg) translate(10px, 5px);
+}
+
+header.header .toggle-bars.on div:nth-child(2) {
+    opacity: 0;
+}
+
+header.header .toggle-bars.on div:nth-child(3) {
+    transform: rotate(-45deg) translate(9px, -7px);
 }
 
 
