@@ -2,24 +2,44 @@ const musicList = document.getElementById('music-list')
 const musicFolder = 'musics/'
 const musicElements = [
     {
-        nameMusic: "7 Rings",
-        authorMusic: "Ariana Grande",
-        directory: musicFolder + "ariana-grande-7-rings-lyrics-2854589.mp3"
+        nameMusic: "Diz Pra Mim",
+        authorMusic: "Malta",
+        directory: musicFolder + "ariana-grande-7-rings-lyrics-2854589.mp3",
+        image: '',
+        lyrics: {
+            original: '',
+            translate: ''
+        }
     }, 
     {
         nameMusic: "Lonely",
-        authorMusic: "Illenium ",
-        directory: musicFolder + "illenium-lonely-feat-chandler-leighton-5001645.mp3"
+        authorMusic: "Illenium",
+        directory: musicFolder + "illenium-lonely-feat-chandler-leighton-5001645.mp3",
+        image: '',
+        lyrics: {
+            original: '',
+            translate: ''
+        }
     },
     {
         nameMusic: "O Sol (VINNE, Double MZK Remix)",
         authorMusic: "Vitor Kley",
-        directory: musicFolder + "Vitor Kley - O Sol (VINNE, Double MZK Remix)_160k.mp3"
+        directory: musicFolder + "Vitor Kley - O Sol (VINNE, Double MZK Remix)_160k.mp3",
+        image: '',
+        lyrics: {
+            original: '',
+            translate: ''
+        }
     },
     {
         nameMusic: "Look At Me",
         authorMusic: "XXXTENTACION",
-        directory: musicFolder + "XXXTENTACION - Look At Me (Audio).mp3"
+        directory: musicFolder + "XXXTENTACION - Look At Me (Audio).mp3",
+        image: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Xxxtentacion_%28cropped%29.jpg',
+        lyrics: {
+            original: '',
+            translate: ''
+        }
     }
 ]
 

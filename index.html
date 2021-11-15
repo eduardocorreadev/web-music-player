@@ -12,7 +12,7 @@
     <title>Web Music Player</title>
 
     <!-- FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- Style Documents -->
     <link rel="stylesheet" href="assets/css/general.css">
@@ -26,59 +26,75 @@
         <source src="" type="audio/mpeg">
     </audio>
 
-    <header class="header">
-        <img src="assets/images/logo.png" alt="Logo da WMP (Web Music Play)">
-        <div class="toggle-bars" id="toggle-bars">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </header>
+    <div class="wrapper" id="wrapper">
+        <header class="header">
+            <img src="assets/images/logo.png" alt="Logo da WMP (Web Music Play)">
+            <div class="toggle-bars" id="toggle-bars">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </header>
 
-    <main>
-        <div class="music-area" id="music-area">
+        <main>
+            <div class="music-area" id="music-area">
 
-            <div class="banner-music">
-                <img src="assets/images/banners/1.png" alt="">
-                <img class="current-music" src="assets/images/banners/2.png" alt="">
-                <img src="assets/images/banners/3.png" alt="">
+                <div class="banner-music" id="banner-music">
+                    <div class="banner-card">
+                        <div class="image-banner">
+                            <img class="img-music"
+                                src="https://www.hojeemdia.com.br/polopoly_fs/1.702224.1596149878!/image/image.jpg_gen/derivatives/landscape_653/image.jpg">
+                        </div>
+                        <div class="controls-banner">
+                            <div class="nivel-volume" id="nivel-volume"></div>
+                            <div class="controls-icons">
+                                <span class="material-icons" id="add-volume">add</span>
+                                <span class="material-icons" id="lyrics">notes</span>
+                                <span class="material-icons" id="remove-volume">remove</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="music-details">
+                    <h2></h2>
+                    <p></p>
+                    <span>04:00 | 04:40</span>
+                </div>
+
+                <div class="progress-bar">
+                    <input type="range" id="progress-bar" value="0">
+                </div>
+
+                <div class="controls">
+                    <ul>
+                        <li>
+                            <span class="material-icons" id="random-controll">shuffle</span>
+                        </li>
+
+                        <li>
+                            <span class="material-icons" id="button-back">skip_previous</span>
+                        </li>
+
+                        <li class="play-controll">
+                            <span class="material-icons" id="play-controll">play_circle_filled</span>
+                        </li>
+
+                        <li>
+                            <span class="material-icons" id="button-skip">skip_next</span>
+                        </li>
+
+                        <li>
+                            <span class="material-icons" id="loop-controll">all_inclusive</span>
+                        </li>
+                    </ul>
+                </div>
+
+
             </div>
 
-            <div class="music-details">
-                <h2></h2>
-                <span></span>
-            </div>
-
-            <div class="progress-bar">
-                <input type="range" id="progress-bar" value="0" onchange="positionAudio(this.value)">
-            </div>
-
-            <div class="controls">
-                <ul>
-                    <li>
-                        <span class="material-icons" id="random-controll">shuffle</span>
-                    </li>
-
-                    <li>
-                        <span class="material-icons">skip_previous</span>
-                    </li>
-                    <li class="play-controll">
-                        <span class="material-icons" id="play-controll">play_circle_filled</span>
-                    </li>
-                    <li>
-                        <span class="material-icons">skip_next</span>
-                    </li>
-
-                    <li>
-                        <span class="material-icons" id="loop-controll">all_inclusive</span>
-                    </li>
-                </ul>
-            </div>
-
-
-        </div>
-
-    </main>
+        </main>
+    </div>
 
     <div class="list" id="list">
         <div class="container">
@@ -101,9 +117,12 @@
         </div>
     </div>
 
+    <div id="content-left-area"></div>
+
     <!-- Javascript Documents -->
     <script src="assets/js/musics.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/requestLyrics.js"></script>
     <script src="assets/js/tab.js"></script>
 </body>
 

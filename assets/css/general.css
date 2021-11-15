@@ -21,15 +21,12 @@ html, body {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
-body {
-    background: radial-gradient(rgb(255, 0, 51, 0.8), #000000);
-    /* background: url('https://image.freepik.com/vetores-gratis/fundo-de-paisagem-tropical-para-zoom_52683-42068.jpg') center center no-repeat;
-    background-size: cover;
-    background-size: 100%; */
-}
-
 ul li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 
@@ -76,6 +73,18 @@ ul li {
 /* =============== */
 /* Other settings */
 /* ============= */
+
+.wrapper {
+    position: absolute;
+    width: 100%; height: 100vh;
+    background: rgb(255,0,51);
+    background: radial-gradient(circle, rgba(255,0,51,1) 0%, rgba(140,3,30,1) 0%, rgba(6,6,6,1) 81%, rgba(0,0,0,1) 100%);
+}
+
+.wrapper.on-content-left {
+    margin-left: 500px;
+    transition: 0.3s;
+}
 
 /* Header */
 header.header {
@@ -132,53 +141,76 @@ header.header .toggle-bars.on div:nth-child(3) {
 main {
     position: absolute;
     width: 100%; height: 100%;
-    display: flex; align-items: center; justify-content: center;
+}
+
+main .music-area {
+    width: 100%;
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
 }
 
 main .music-area .banner-music {
-    padding: 40px 0;
-    display: flex; justify-content: center;
+    width: 100%;
 }
 
-main .music-area .banner-music img {
-    width: 250px;
-    margin: 0 30px;
+main .music-area .banner-music .banner-card {
+    position: relative; left: 50%; transform: translate(-50%);
+    width: 250px; height: 250px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 25px 2px rgba(0,0,0,0.87); 
+    box-shadow: 0px 0px 25px 2px rgba(0,0,0,0.87);
+}
+
+main .music-area .banner-music .banner-card:hover .controls-banner {
+    opacity: 1;
+}
+
+main .music-area .banner-music .image-banner {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: blue;
+}
+
+main .music-area .banner-music .image-banner img {
+    width: 100%; height: 100%;
+}
+
+main .music-area .banner-music .controls-banner {
+    opacity: 0;
+    position: relative; left: 0; top: 0;
+    height: 100%;
+    display: flex; align-items: center; flex-direction: column; justify-content: space-evenly;
+    transition: opacity 0.3s;
+}
+
+main .music-area .banner-music .controls-banner .nivel-volume {
+    position: absolute; bottom: 0; z-index: 1;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+main .music-area .banner-music .controls-banner .controls-icons {
+    width: 100%; height: 100%;
+    position: absolute; z-index: 2;
+    display: flex; align-items: center; flex-direction: column; justify-content: space-evenly;
+}
+
+main .music-area .banner-music .controls-banner .controls-icons span {
+    color: #fff;
+    font-size: 3rem;
     cursor: pointer;
 }
 
-main .music-area .banner-music img.current-music {
-    margin-top: -45px;
-}
 
-main .music-area.on .banner-music img.current-music {
-    /* -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both; */
-    animation: slide-top 0.5s ease infinite alternate;
-}
 
-@keyframes slide-top {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-30px);
-  }
-}
-
-main .progress-bar {
-    margin: 40px 0;
-}
-
-main .progress-bar input[type=range] {
-    width: 100%;
-    background: #44475a;
-    margin: 0 auto;
-}
 
 main .music-area .music-details {
     width: 100%;
     color: #fff;
     text-align: center;
     padding: 20px 0;
+    margin-bottom: 35px;
 }
 
 main .music-area .music-details h2 {
@@ -187,15 +219,26 @@ main .music-area .music-details h2 {
     font-weight: var(--fontRegular);
 }
 
+main .music-area .music-details p {
+    color: #9D9D9D;
+    font-size: 1.6rem;
+}
+
 main .music-area .music-details span {
     color: #9D9D9D;
     font-size: 1.6rem;
 }
 
-/* main .music-area .progress-bar {
-    width: 100%; height: 10px;
-    background: red;
-} */
+main .progress-bar {
+    width: 700px;
+    margin: 0 auto 20px auto;
+}
+
+main .progress-bar input[type=range] {
+    width: 100%;
+    background: #0021f5;
+    margin: 0 auto;
+}
 
 main .music-area .controls {
     width: 100%;
@@ -211,12 +254,12 @@ main .music-area .controls ul li {
 
 main .music-area .controls span {
     color: #fff;
-    font-size: 2.5rem;
+    font-size: 2rem;
     cursor: pointer;
 }
 
 main .music-area .controls .play-controll span {
-    font-size: 3.5em;
+    font-size: 4em;
 }
 
 
@@ -350,6 +393,92 @@ main .music-area .controls .play-controll span {
     border: 2px solid #ffffff; 
 }
 
+
+/* Lyrics */
+.lyrics {
+    position: absolute; z-index: 2;
+    width: 500px; height: 100vh;
+}
+
+.lyrics .container {
+    width: 100%; height: 100%;
+    background: #050505;
+    padding: 20px;
+    animation: leftAnimation 0.3s;
+}
+
+@keyframes leftAnimation {
+    from {
+        margin-left: -500px;
+    }
+    to {
+        margin-left: 0;
+    }
+}
+
+.lyrics .container h2 {
+    color: #fff;
+}
+
+.lyrics .container .select-version {
+    display: flex;
+    margin-top: 20px;
+}
+
+.lyrics .container .select-version button {
+    width: 100%; height: 35px;
+    color: #fff;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 0 3px;
+}
+
+.lyrics .container .select-version button.current-lyrics {
+    color: #000;
+    background: #fff;
+}
+
+.lyrics .container .show-lyrics {
+    width: 100%; height: 80vh;
+    overflow: auto;
+    margin: 20px 0;
+}
+
+.lyrics .container .show-lyrics::-webkit-scrollbar {
+    width: 4px;
+  }
+
+.lyrics .container .show-lyrics::-webkit-scrollbar-track {
+    background: #44475a; 
+  }
+   
+.lyrics .container .show-lyrics::-webkit-scrollbar-thumb {
+    background: #282a36; 
+}
+
+.lyrics .container .show-lyrics p {
+    color: #dfdfdf;
+    font-size: 1.4rem;
+}
+
+.lyrics .container .copyright {
+    position: relative; bottom: 0; left: 0;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+    background: rgba(255,0,51,1);
+}
+
+.lyrics .container .copyright p {
+    font-size: 1.2rem;
+}
+
+.lyrics .container .copyright p a {
+    color: #fff;
+    font-weight: var(--fontBold);
+}
 
 /* ================ */
 /* Main Animations */
