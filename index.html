@@ -29,11 +29,7 @@
     <div class="wrapper" id="wrapper">
         <header class="header">
             <img src="assets/images/logo.png" alt="Logo da WMP (Web Music Play)">
-            <div class="toggle-bars" id="toggle-bars">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+            <span class="material-icons" id="toggle-bars">menu</span>
         </header>
 
         <main>
@@ -42,14 +38,14 @@
                 <div class="banner-music" id="banner-music">
                     <div class="banner-card">
                         <div class="image-banner">
-                            <img class="img-music"
-                                src="https://www.hojeemdia.com.br/polopoly_fs/1.702224.1596149878!/image/image.jpg_gen/derivatives/landscape_653/image.jpg">
+                            <img class="img-music" id="image-music"
+                                src="https://i.pinimg.com/564x/6f/0f/cd/6f0fcdb44a1a896541d78d2bd3ed7c80.jpg">
                         </div>
                         <div class="controls-banner">
                             <div class="nivel-volume" id="nivel-volume"></div>
                             <div class="controls-icons">
                                 <span class="material-icons" id="add-volume">add</span>
-                                <span class="material-icons" id="lyrics">notes</span>
+                                <span class="material-icons" id="add-lyrics">notes</span>
                                 <span class="material-icons" id="remove-volume">remove</span>
                             </div>
                         </div>
@@ -57,9 +53,9 @@
                 </div>
 
                 <div class="music-details">
-                    <h2></h2>
-                    <p></p>
-                    <span>04:00 | 04:40</span>
+                    <h2 id="name-music"></h2>
+                    <p id="author-music"></p>
+                    <span id="time-music">04:00 | 04:40</span>
                 </div>
 
                 <div class="progress-bar">
@@ -96,34 +92,38 @@
         </main>
     </div>
 
-    <div class="list" id="list">
-        <div class="container">
-            <div class="header">
-                <h2>
-                    Lista de Músicas
-                    <span>(0)</span>
-                </h2>
-                x
+    <div class="display-container" id="display-container">
+
+        <div class="lyrics" id="lyrics">
+            <h2 class="title-lyrics">Letra de: <span id="show-name-author"></span></h2>
+        
+            <div class="select-version">
+                <button class="lyrics-original current-lyrics" type="button" value="original">Original</button>
+                <button class="lyrics-translate" type="button" value="translate">Tradução</button>
             </div>
-
-            <div class="music-list" id="music-list"></div>
-
-            <div class="select-theme-footer" id="select-theme">
-                <div class="red-theme selected"></div>
-                <div class="blue-theme"></div>
-                <div class="green-theme"></div>
+        
+            <div class="show-lyrics scroll-custom">
+                <p id="show-lyrics-original"></p>
+                <p id="show-lyrics-translate" style="display: none;"></p>
             </div>
-
+            
+            <div class="copyright">
+                <p>Letras por: <a href="https://www.vagalume.com.br/" target="_blank">Vagalumes.com</a></p>
+            </div>
         </div>
-    </div>
 
-    <div id="content-left-area"></div>
+        <div class="list" id="list">
+            <h2 class="title-list">Lista de Músicas</h2>
+            <div class="music-list scroll-custom" id="music-list"></div>
+        </div>
+
+    </div>
 
     <!-- Javascript Documents -->
     <script src="assets/js/musics.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/requestLyrics.js"></script>
-    <script src="assets/js/tab.js"></script>
+    <script src="assets/js/menu.js"></script>
 </body>
 
 </html>
