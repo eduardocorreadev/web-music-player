@@ -141,7 +141,6 @@ main .music-area .banner-music .banner-card:hover .controls-banner {
 main .music-area .banner-music .image-banner {
     position: absolute;
     width: 100%; height: 100%;
-    background: blue;
 }
 
 main .music-area .banner-music .image-banner img {
@@ -207,7 +206,6 @@ main .progress-bar {
 
 main .progress-bar input[type=range] {
     width: 100%;
-    background: #0021f5;
     margin: 0 auto;
 }
 
@@ -329,6 +327,7 @@ main .music-area .controls .play-controll span {
 }
 
 .lyrics .show-lyrics p {
+    white-space: pre-line;
     color: var(--Comment);
     font-size: 1.4rem;
 }

@@ -51,8 +51,8 @@ btnAddLyrics.addEventListener('click', () => {
             if (getListMusics[prop].directory == directoryCurrentMusic) {
                 nameAndAuthor.innerHTML = `${getListMusics[prop].nameMusic} - ${getListMusics[prop].authorMusic}`
 
-                lyricsOriginalVersion.innerHTML = getListMusics[prop].lyrics.original !== "" ? getListMusics[prop].lyrics.original : "Letra não disponível nessa versão"
-                lyricsTranslateVersion.innerHTML = getListMusics[prop].lyrics.translate !== "" ? getListMusics[prop].lyrics.translate : "Letra não disponível nessa versão"
+                lyricsOriginalVersion.innerHTML = getListMusics[prop].lyrics.original !== "" ? getListMusics[prop].lyrics.original : "Letra não disponível nesta versão"
+                lyricsTranslateVersion.innerHTML = getListMusics[prop].lyrics.translate !== "" ? getListMusics[prop].lyrics.translate : "Letra não disponível nesta versão"
                 break
             }
         }
