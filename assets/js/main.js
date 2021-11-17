@@ -303,4 +303,6 @@ if (typeof (Storage) !== 'undefined') {
 
 /*  
     Quando não estiver musica, pode estar com um url que não existe, então precisa verificar
+    Fazer tudo que envolva o tempo do áudio
+    Fazer a forma de visualizar que está selecionado...
 */
