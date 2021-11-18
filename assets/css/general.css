@@ -280,6 +280,10 @@ main .music-area .controls .play-controll span {
     background: var(--CurrentLine);
 }
 
+.list .music-list .music-item.item-selected {
+    background: #ff79c6;
+}
+
 .list .music-list .music-item .name-music {
     color: #fff;
 }

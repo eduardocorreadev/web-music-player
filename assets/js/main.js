@@ -11,9 +11,6 @@ if (typeof (Storage) !== 'undefined') {
     const loopControll = document.getElementById('loop-controll') // Loop
     const randomControll = document.getElementById('random-controll') // Random
 
-    const getConfig = JSON.parse(getItem('wmp-config'))  // Config in LocalStorage
-    const getListMusic = JSON.parse(getItem('list-music')) // List Music in LocalStorage
-
     let musicTimer; // Timer for setInterval
 
     function setItem(key, value) {
@@ -25,7 +22,7 @@ if (typeof (Storage) !== 'undefined') {
     }
 
     if (!getItem('wmp-config')) {
-        const addConfig = {currentMusic: {directory: "",time: 0,},controls: {play: false,volume: 100,random: false,loop: false}}
+        const addConfig = { currentMusic: { directory: "", time: 0, }, controls: { play: false, volume: 100, random: false, loop: false } }
 
         setItem('wmp-config', JSON.stringify(addConfig))
     }
@@ -33,14 +30,17 @@ if (typeof (Storage) !== 'undefined') {
     const time = {
         converter(time) {
             let m = Math.floor(time / 60)
-            let s = time - m  * 60
+            let s = time - m * 60
 
-            return `${m.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}:${s.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}`            
+            return `${m.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}:${s.toLocaleString('en-US', { minimumIntegerDigits: 2, useGrouping: false })}`
         },
         display() {
             timerScreen.innerHTML = `${this.converter(Math.floor(audioElement.currentTime))} | ${this.converter(Math.floor(audioElement.duration))}`
         }
     }
+
+    const getConfig = JSON.parse(getItem('wmp-config'))  // Config in LocalStorage
+    const getListMusic = JSON.parse(getItem('list-music')) // List Music in LocalStorage
 
     function loadMusic() {
         const imageMusic = document.getElementById('image-music') // Music Image Element
@@ -55,12 +55,23 @@ if (typeof (Storage) !== 'undefined') {
                     audioElement.currentTime = getConfig.currentMusic.time // Adicionar Momento onde a música parou
                     audioElement.load() // Carregar Música
 
+                    // progressBar.max = audioElement.duration
+                    // progressBar.value = getConfig.currentMusic.time
+
                     imageMusic.src = getListMusic[prop].image // Adicionar Imagem ao card
                     nameMusic.innerHTML = getListMusic[prop].nameMusic // Adicionar nome da Música
                     authorMusic.innerHTML = getListMusic[prop].authorMusic // Adicionar nome do author
 
                     loopControll.style.color = getConfig.controls.loop ? 'var(--Green)' : 'var(--Foreground)' // Carregar cor do botão
                     randomControll.style.color = getConfig.controls.random ? 'var(--Green)' : 'var(--Foreground)' // Carregar cor do botão
+
+                    document.querySelectorAll('.music-item').forEach(item => {
+                        if (getConfig.currentMusic.directory === item.firstElementChild.textContent) {
+                            item.classList.add('item-selected')
+                        } else {
+                            item.classList.remove('item-selected')
+                        }
+                    });
 
                     break
                 }
@@ -73,14 +84,14 @@ if (typeof (Storage) !== 'undefined') {
 
 
     loadMusic()
-    
+
     const controls = {
         onPlay() {
 
             audioElement.play() // Iniciar o áudio
             playControll.innerHTML = playIcons[0] // Alterar icone
             this.updateProgressBar()
-            
+
             getConfig.controls.play = true // Alterar o estado do play para true lá no localstorage
             setItem('wmp-config', JSON.stringify(getConfig)) // Adicionando ao localstorage a atualização
         },
@@ -88,7 +99,7 @@ if (typeof (Storage) !== 'undefined') {
             audioElement.pause() // Pausar o áudio
             playControll.innerHTML = playIcons[1] // Alterar o icone
             clearInterval(musicTimer) // Limpando interval do this.updateProgressBar
-            
+
             getConfig.controls.play = false // Alterar o estado do play para true lá no localstorage
             setItem('wmp-config', JSON.stringify(getConfig)) // Adicionando ao localstorage a atualização
         },
@@ -99,7 +110,7 @@ if (typeof (Storage) !== 'undefined') {
                 for (let prop in getListMusic) {
                     if (getListMusic[prop].directory == getConfig.currentMusic.directory) {
 
-                        var valueList = prop === '0' ? getListMusic.length-1 : valueList = --prop
+                        var valueList = prop === '0' ? getListMusic.length - 1 : valueList = --prop
 
                         getConfig.currentMusic.directory = getListMusic[valueList].directory
                         setItem('wmp-config', JSON.stringify(getConfig))
@@ -116,7 +127,7 @@ if (typeof (Storage) !== 'undefined') {
                 for (let prop in getListMusic) {
                     if (getListMusic[prop].directory == getConfig.currentMusic.directory) {
 
-                        if (prop >= getListMusic.length-1) {
+                        if (prop >= getListMusic.length - 1) {
                             prop = 0
                         } else {
                             ++prop
@@ -132,7 +143,7 @@ if (typeof (Storage) !== 'undefined') {
             } else {
                 controls.random()
             }
-            
+
             setItem('wmp-config', JSON.stringify(getConfig))
 
         },
@@ -172,11 +183,11 @@ if (typeof (Storage) !== 'undefined') {
         })
     })
 
-
     /* PLAY AND PAUSE (Click and Keyboard)*/
     playControll.addEventListener('click', () => {
         if (getConfig.currentMusic.directory === "") {
             getConfig.currentMusic.directory = getListMusic[0].directory
+            loadMusic()
         }
 
         !getConfig.controls.play ? controls.onPlay() : controls.onPause()
@@ -212,7 +223,7 @@ if (typeof (Storage) !== 'undefined') {
             randomControll.style.color = 'var(--Green)'
         } else {
             randomControll.style.color = 'var(--Foreground)'
-        
+
         }
 
         controls.changeState('random')
@@ -228,18 +239,9 @@ if (typeof (Storage) !== 'undefined') {
     })
 
     window.addEventListener('beforeunload', () => { // Pausar quando dar reload na página
-        getConfig.currentMusic.time = audioElement.currentTime // Enviando o tempo atual para o localstorage
+        getConfig.currentMusic.time = Math.floor(audioElement.currentTime) // Enviando o tempo atual para o localstorage
         controls.onPause() // E por conta dessa função, ele já irá enviar a atualização
-    }) 
-
-
-
-
-
-
-
-
-
+    })
 
 
     // Volume
@@ -263,36 +265,36 @@ if (typeof (Storage) !== 'undefined') {
         },
         changeVolumeAudio() {
             audioElement.volume = volumeCounter / 100
-        }
-    }
-
-    document.getElementById('add-volume').addEventListener('click', () => {
-        if (volumeCounter < 100) {
-            volumeCounter = volumeCounter + 5
-            volume.loadVolume()
-        }
-    })
-
-    document.getElementById('remove-volume').addEventListener('click', () => {
-        if (volumeCounter > 0) {
-            volumeCounter = volumeCounter - 5
-            volume.loadVolume()
-        }
-    })
-
-    document.addEventListener('keydown', event => {
-        if (event.code == "NumpadAdd") {
+        },
+        addVolume() {
             if (volumeCounter < 100) {
                 volumeCounter = volumeCounter + 5
                 volume.loadVolume()
             }
-        }
-
-        if (event.code == "NumpadSubtract") {
+        },
+        removeVolume() {
             if (volumeCounter > 0) {
                 volumeCounter = volumeCounter - 5
                 volume.loadVolume()
             }
+        }
+    }
+
+    document.getElementById('add-volume').addEventListener('click', () => {
+        volume.addVolume()
+    })
+
+    document.getElementById('remove-volume').addEventListener('click', () => {
+        volume.removeVolume()
+    })
+
+    document.addEventListener('keydown', event => {
+        if (event.code == "NumpadAdd") {
+            volume.addVolume()
+        }
+
+        if (event.code == "NumpadSubtract") {
+            volume.removeVolume()
         }
     })
 
@@ -301,8 +303,6 @@ if (typeof (Storage) !== 'undefined') {
 }
 
 
-/*  
-    Quando não estiver musica, pode estar com um url que não existe, então precisa verificar
+/*
     Fazer tudo que envolva o tempo do áudio
-    Fazer a forma de visualizar que está selecionado...
 */
